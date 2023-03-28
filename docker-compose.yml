@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: comic_book_db
+    environment:
+      MYSQL_DATABASE: database
+      MYSQL_USER: iacarvalho
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  app:
+    build: app
+    container_name: comic_book
+    restart: always
+    tty: false
+    working_dir: /src/app
+    # entrypoint: npx knex migrate:latest
+    volumes:
+      - ./app:/src/app
+    environment:
+      - PORT=3333
+    ports:
+      - "8081:3333"
+    depends_on:
+     - db
+
+volumes:
+  dbdata:

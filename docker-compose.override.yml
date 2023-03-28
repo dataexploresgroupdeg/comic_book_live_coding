@@ -1,0 +1,7 @@
+version: '3'
+services:
+  app:
+    environment:
+      TESTE_DATABASE: database
+      TESTE_USER: iacarvalho
+      TESTE_PASSWORD: 123456

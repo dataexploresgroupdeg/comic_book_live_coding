@@ -3,7 +3,7 @@ import setupKnex from 'knex'
 export const config = {
     client: 'mysql',
     connection: {
-      host : 'localhost',
+      host : 'db',
       port : 3306,
       user : 'iacarvalho',
       password : '123456',
